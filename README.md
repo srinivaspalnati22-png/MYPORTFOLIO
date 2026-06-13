@@ -1,6 +1,10 @@
 # Portfolio Website - Full Stack Application
 
-A complete full-stack portfolio website for Palnati Pushpa Naga Venkata Srinivas, a BTech CSE 2nd Year student at NRI Institute of Technology with a CGPA of 8.0.
+A complete full-stack portfolio website for Palnati Pushpa Naga Venkata Srinivas, a BTech CSE student, AI Enthusiast, Startup Builder, and Hackathon Developer.
+
+### 🌐 Live Production Deployment
+🚀 **Live URL**: [https://myportfolio-pi-brown.vercel.app](https://myportfolio-pi-brown.vercel.app)
+
 
 ## Features
 
@@ -29,9 +33,11 @@ A complete full-stack portfolio website for Palnati Pushpa Naga Venkata Srinivas
 
 ```
 myportfolio/
-├── v.html              # Main HTML file (Frontend)
+├── index.html          # Main Entry HTML file (Frontend - serves at root /)
+├── v.html              # Mirror HTML file (Frontend)
 ├── v.css               # Stylesheet
 ├── v.js                # Frontend JavaScript with API integration
+├── vercel.json         # Vercel Serverless Routing configurations
 ├── server.js           # Express.js Backend Server
 ├── package.json        # Node.js dependencies
 ├── .env.example        # Environment variables template
