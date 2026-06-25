@@ -2,8 +2,7 @@
 
 A complete full-stack portfolio website for Palnati Pushpa Naga Venkata Srinivas, a BTech CSE student, AI Enthusiast, Startup Builder, and Hackathon Developer.
 
-### 🌐 Live Production Deployment
-🚀 **Live URL**: [https://myportfolio-pi-brown.vercel.app](https://myportfolio-pi-brown.vercel.app)
+### 🌐 Live Production Deploym
 
 
 ## Features
