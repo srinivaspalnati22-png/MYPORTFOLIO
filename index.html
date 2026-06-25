@@ -18,29 +18,29 @@
 
     <style>
         /* -------------------------------------------------------------
-           CINEMATIC BLACK, RED, & GLOWING NEON ACCENTS OVERRIDES
+           PROFESSIONAL MODERN PORTFOLIO OVERRIDES
            ------------------------------------------------------------- */
         :root {
-            --bg-dark: #020205;
-            --bg-darker: #000000;
-            --bg-card: rgba(14, 5, 8, 0.65);
-            --bg-card-hover: rgba(25, 8, 12, 0.85);
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: rgba(30, 41, 59, 0.65);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
             
-            --primary: #ff003c; /* Glowing Cyberpunk Red */
-            --primary-rgb: 255, 0, 60;
-            --secondary: #ff3366; /* Light Neon Pink/Red */
-            --secondary-rgb: 255, 51, 102;
-            --accent: #ff003c;
-            --accent-rgb: 255, 0, 60;
-            --error: #ff3366;
+            --primary: #3b82f6; /* Professional Blue */
+            --primary-rgb: 59, 130, 246;
+            --secondary: #6366f1; /* Indigo */
+            --secondary-rgb: 99, 102, 241;
+            --accent: #0ea5e9; /* Sky Blue */
+            --accent-rgb: 14, 165, 233;
+            --error: #ef4444;
             
-            --border-glass: rgba(255, 0, 60, 0.09);
-            --border-active: rgba(255, 0, 60, 0.45);
-            --border-accent: rgba(255, 51, 102, 0.45);
+            --border-glass: rgba(59, 130, 246, 0.15);
+            --border-active: rgba(59, 130, 246, 0.45);
+            --border-accent: rgba(99, 102, 241, 0.45);
             
-            --glow-primary: 0 0 20px rgba(255, 0, 60, 0.45);
-            --glow-secondary: 0 0 20px rgba(255, 51, 102, 0.45);
-            --glow-accent: 0 0 20px rgba(255, 0, 60, 0.45);
+            --glow-primary: 0 0 20px rgba(59, 130, 246, 0.35);
+            --glow-secondary: 0 0 20px rgba(99, 102, 241, 0.35);
+            --glow-accent: 0 0 20px rgba(14, 165, 233, 0.35);
         }
 
         /* Connection Neural Overlay Gate */
@@ -245,18 +245,51 @@
             transition: height 0.08s ease;
         }
 
-        /* Custom centering layout overrides for cinematic experience */
-        .centered-hero-grid {
-            display: flex;
-            flex-direction: column;
+        /* Split layout overrides for cinematic experience */
+        .split-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            gap: 40px;
             padding-top: 130px;
             padding-bottom: 90px;
             position: relative;
             z-index: 5;
             min-height: 100vh;
+        }
+        .hero-text-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            z-index: 10;
+        }
+        .hero-visual-col {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .split-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text-col {
+                align-items: center;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .hero-text-col .hero-subtitle-container {
+                justify-content: center !important;
+            }
+            #three-container {
+                left: 50% !important;
+                top: 80% !important;
+            }
         }
 
         /* 3D Canvas Canvas Styling */
@@ -617,18 +650,7 @@
 </head>
 
 <body>
-    <!-- Real Voice Audio Tag support -->
-    <audio id="real-voice-audio" src="voice.mp3" preload="auto"></audio>
 
-    <!-- Connection Neural Overlay Gate -->
-    <div class="intro-overlay" id="intro-overlay">
-        <div class="intro-hud-box">
-            <div class="hud-scanner-line"></div>
-            <h2 class="font-digital" style="font-size:1.1rem; color:var(--primary);">AI PORTFOLIO TELEMETRY v5.0</h2>
-            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">Establish secure audio telemetry link and calibrate avatar lip-sync for developer Palnati Srinivas.</p>
-            <button class="btn btn-primary glow-btn" id="connect-btn">CONNECT NEURAL LINK</button>
-        </div>
-    </div>
 
     <!-- Custom Cursor Trailers -->
     <div class="custom-cursor"></div>
@@ -663,66 +685,45 @@
 
     <!-- Hero Section (Centered Talking Avatar Landing Page) -->
     <section id="home" class="hero-section">
-        <div class="container centered-hero-grid">
-            <!-- Center Realistic Talking Avatar -->
-            <div class="talking-avatar-wrapper" id="avatar-container">
-                <!-- SVG Holographic Scanner overlays for Blinking & Lip Sync -->
-                <div class="face-mesh-svg-container">
-                    <svg class="face-mesh-svg" viewBox="0 0 100 100">
-                        <!-- Holographic wireframe eyebrows/eyes tracker -->
-                        <path class="mesh-eye-left" d="M 33 46 Q 38 41 43 46 Q 38 50 33 46" fill="none" stroke="var(--primary)" stroke-width="0.8" />
-                        <path class="mesh-eye-right" d="M 57 46 Q 62 41 67 46 Q 62 50 57 46" fill="none" stroke="var(--primary)" stroke-width="0.8" />
-                        <!-- Talking Lip-Sync Mouth Mesh -->
-                        <path id="mesh-mouth" d="M 42 66 Q 50 66 58 66" fill="none" stroke="var(--secondary)" stroke-width="1.3" />
-                    </svg>
+        <div class="container split-hero-grid">
+            <div class="hero-text-col">
+                <div class="hero-subtitle-container" style="justify-content: flex-start; margin-bottom: 10px;">
+                    <span class="tech-pill" style="font-size: 0.85rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.15); border-color: var(--primary); color: #fff;">AI Enthusiast & Developer</span>
                 </div>
-                
-                <img src="vasu.jpg" alt="Palnati Pushpa Naga Venkata Srinivas" class="avatar-img">
-            </div>
-
-            <!-- Floating Code Snippet Cards -->
-            <div class="floating-code-card snippet-1">
-                const developer = <span>new Palnati();</span>
-            </div>
-            <div class="floating-code-card snippet-2">
-                import <span>{ AI_Agent }</span> from 'gemini';
-            </div>
-            <div class="floating-code-card snippet-3">
-                developer.<span>build(future);</span>
-            </div>
-
-            <!-- Speech Dashboard -->
-            <div class="assistant-dashboard">
-                <div class="subtitle-tracker">
-                    <span id="ai-subtitle-text">ONLINE // TELEMETRY CONNECTED</span>
-                </div>
-                <!-- Pulser Waveform -->
-                <div class="speech-waveform" id="hud-waveform">
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
+                <h1 class="hero-title" style="font-size: 4rem; font-family: var(--font-heading); color: #fff; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; transform: none; opacity: 1;">
+                    Hi, I am <br><span style="color: var(--secondary); text-shadow: var(--glow-secondary);">Palnati Srinivas</span>
+                </h1>
+                <p class="hero-description" style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 0 30px 0; line-height: 1.7; transform: none; opacity: 1;">
+                    B.Tech CSE Student | Startup Builder | Hackathon Developer. <br>
+                    Skilled in building intelligent AI systems, designing responsive full-stack solutions, and turning innovative ideas into functional prototypes.
+                </p>
+                <div id="hero-ctas" style="display: flex; gap: 15px;">
+                    <button class="btn btn-primary glow-btn" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">ENTER PORTFOLIO</button>
+                    <button class="btn btn-secondary" style="border: 1px solid var(--border-glass); background: transparent; padding: 12px 24px; border-radius: 6px; color: #fff; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">VIEW PROJECTS</button>
                 </div>
             </div>
 
-            <div style="margin-top: 25px;" id="hero-ctas">
-                <button class="btn btn-primary glow-btn" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">ENTER PORTFOLIO</button>
+            <div class="hero-visual-col">
+                <!-- Center Realistic Talking Avatar -->
+                <div class="talking-avatar-wrapper" id="avatar-container">
+                    <img src="vasu.jpg" alt="Palnati Pushpa Naga Venkata Srinivas" class="avatar-img">
+                </div>
+
+                <!-- Floating Code Snippet Cards -->
+                <div class="floating-code-card snippet-1" style="left: -10%;">
+                    const developer = <span>new Palnati();</span>
+                </div>
+                <div class="floating-code-card snippet-2" style="right: -5%;">
+                    import <span>{ AI_Agent }</span> from 'gemini';
+                </div>
+                <div class="floating-code-card snippet-3" style="top: 80%; left: 50%; transform: translateX(-50%);">
+                    developer.<span>build(future);</span>
+                </div>
             </div>
         </div>
         
         <!-- Three.js Background Container tucked in under the centered avatar -->
-        <div id="three-container" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:550px; height:550px; z-index:1; pointer-events:none; opacity:0.35;"></div>
+        <div id="three-container" style="position:absolute; top:50%; left:75%; transform:translate(-50%, -50%); width:550px; height:550px; z-index:1; pointer-events:none; opacity:0.35;"></div>
     </section>
 
     <!-- About Section -->
@@ -1054,6 +1055,115 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 4: SmartCivic AI -->
+                <div class="project-showcase-row">
+                    <div class="project-info-col">
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Flask</span>
+                            <span class="tech-pill">Gemini AI</span>
+                            <span class="tech-pill">JavaScript</span>
+                        </div>
+                        <h3>SmartCivic AI - Civic Reporting Platform</h3>
+                        <p class="project-subtitle">Multilingual Voice Assistant & Issue Management</p>
+                        <p class="about-body">Developed an AI-powered platform for reporting civic issues. Features a multilingual voice assistant supporting English, Hindi, Telugu, and Tamil with smart complaint categorization.</p>
+                        <ul class="project-feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Multilingual Voice</strong>: Seamlessly report issues using voice commands.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Smart Categorization</strong>: Automated issue routing via Gemini AI backend.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Location Tracking</strong>: Integrates GPS coordinates with real-time chat.</span>
+                            </li>
+                        </ul>
+                        <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
+                            Explore Repository
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-visual-col">
+                        <!-- CSS Mock Dashboard 4: SmartCivic -->
+                        <div class="mock-dashboard">
+                            <div class="mock-header">
+                                <div class="mock-dot red"></div>
+                                <div class="mock-dot yellow"></div>
+                                <div class="mock-dot green"></div>
+                                <div class="mock-title">smartcivic_backend.py</div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-line"><span class="mock-cmd">$</span> FLASK_APP=app.py flask run</div>
+                                <div class="mock-line">[+] INITIALIZING VOICE ASSISTANT...</div>
+                                <div class="mock-line">[+] LANGUAGE DETECTED: TELUGU</div>
+                                <div class="mock-line-glow green">[OK] CATEGORIZED: INFRASTRUCTURE</div>
+                                <div class="mock-line">[+] LOCATION LOGGED AND SYNCED.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: TrustShield AI -->
+                <div class="project-showcase-row">
+                    <div class="project-info-col">
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Flutter</span>
+                            <span class="tech-pill">Firebase</span>
+                            <span class="tech-pill">Gemini 2.0</span>
+                            <span class="tech-pill">Node.js</span>
+                        </div>
+                        <h3>TrustShield AI - Digital Scam Protection</h3>
+                        <p class="project-subtitle">AI Threat Intelligence & Background Notification Monitor</p>
+                        <p class="about-body">Built a comprehensive mobile platform to detect digital scams, verify documents via OCR, and monitor background notifications for real-time threat protection.</p>
+                        <ul class="project-feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Message & URL Scanner</strong>: Deep AI analysis of domains and phishing attempts.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Offer Letter Verifier</strong>: OCR-based document authentication engine.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Notification Monitor</strong>: Real-time Android background threat interception.</span>
+                            </li>
+                        </ul>
+                        <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
+                            Explore Repository
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-visual-col">
+                        <!-- CSS Mock Dashboard 5: TrustShield -->
+                        <div class="mock-dashboard">
+                            <div class="mock-header">
+                                <div class="mock-dot red"></div>
+                                <div class="mock-dot yellow"></div>
+                                <div class="mock-dot green"></div>
+                                <div class="mock-title">trustshield_service.kt</div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-line"><span class="mock-cmd">BACKGROUND:</span> NOTIFICATION INTERCEPTED</div>
+                                <div class="mock-line">[+] EXTRACTING URL PAYLOAD...</div>
+                                <div class="mock-progress-bar">
+                                    <div class="mock-progress" style="width: 95%; background: var(--error);"></div>
+                                </div>
+                                <div class="mock-line-glow red" style="margin-top:10px;">[ALERT] PHISHING ATTEMPT BLOCKED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1280,9 +1390,6 @@
     
     <!-- Three.js Interactive 3D Sphere Script -->
     <script>
-        // Global variable to track assistant speaking state for lip-sync
-        let isSpeaking = false;
-
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('three-container');
             if (!container) return;
@@ -1303,9 +1410,9 @@
             const positions = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
 
-            // Crimson red theme colors for 3D sphere
-            const color1 = new THREE.Color('#ff003c'); // Neon Red
-            const color2 = new THREE.Color('#ff3366'); // Neon Pink/Crimson
+            // Professional theme colors for 3D sphere
+            const color1 = new THREE.Color('#3b82f6'); // Professional Blue
+            const color2 = new THREE.Color('#0ea5e9'); // Sky Blue
 
             for (let i = 0; i < particleCount; i++) {
                 // Sphere math
@@ -1343,7 +1450,7 @@
             // Add inner rotating wireframe (neon red themed)
             const wireGeometry = new THREE.IcosahedronGeometry(1.4, 2);
             const wireMaterial = new THREE.MeshBasicMaterial({
-                color: 0xff003c,
+                color: 0x3b82f6,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.09
@@ -1479,28 +1586,8 @@
             });
 
             // -------------------------------------------------------------
-            // 3. Realistic Eyes Blinking & Head Movement Simulation
+            // 3. Head Movement Simulation & Hero Entrance
             // -------------------------------------------------------------
-            const eyeL = document.querySelector('.mesh-eye-left');
-            const eyeR = document.querySelector('.mesh-eye-right');
-
-            const blinkEyes = () => {
-                if (eyeL && eyeR) {
-                    // Flatten eye arcs
-                    eyeL.setAttribute('d', 'M 33 46 L 43 46');
-                    eyeR.setAttribute('d', 'M 57 46 L 67 46');
-                    
-                    setTimeout(() => {
-                        // Open eye arcs back up
-                        eyeL.setAttribute('d', 'M 33 46 Q 38 41 43 46 Q 38 50 33 46');
-                        eyeR.setAttribute('d', 'M 57 46 Q 62 41 67 46 Q 62 50 57 46');
-                    }, 140);
-                }
-                // Schedule next blink randomly (between 2 to 5 seconds)
-                setTimeout(blinkEyes, Math.random() * 3000 + 2000);
-            };
-            blinkEyes();
-
             // Slightly tilt head/shoulders naturally
             const avatarContainer = document.getElementById('avatar-container');
             const tiltAvatarNaturally = () => {
@@ -1517,190 +1604,25 @@
             tiltAvatarNaturally();
 
             // -------------------------------------------------------------
-            // 4. Lip Sync & Audio Telemetry Pipeline
+            // 4. Hero Entrance Animations
             // -------------------------------------------------------------
-            const speechPhrases = [
-                { text: "Hello, I’m Palnati Srinivas.", duration: 2200 },
-                { text: "Welcome to my portfolio.", duration: 2000 },
-                { text: "I’m passionate about Full Stack Development, AI, and building innovative real-world projects.", duration: 5200 },
-                { text: "Explore my work, skills, and projects.", duration: 3200 },
-                { text: "Let’s build something amazing together.", duration: 3200 }
-            ];
+            // Cinematic zoom-in camera entrance effect on Avatar Capsule
+            gsap.from('#avatar-container', {
+                scale: 0.4,
+                duration: 1.5,
+                delay: 0.2,
+                ease: 'elastic.out(1, 0.75)'
+            });
 
-            const subtitleLabel = document.getElementById('ai-subtitle-text');
-            const mouthPath = document.getElementById('mesh-mouth');
-            const waveBars = document.querySelectorAll('.wave-bar');
-            const audioElem = document.getElementById('real-voice-audio');
-
-            let volumeAnalyser;
-            let dataArray;
-            let audioCtx;
-            let audioSource;
-
-            // Lip-Sync Render Loop based on volume amplitude
-            const renderLipSync = () => {
-                if (!isSpeaking) {
-                    if (mouthPath) mouthPath.setAttribute('d', 'M 42 66 Q 50 66 58 66');
-                    waveBars.forEach(bar => {
-                        bar.style.height = '6px';
-                    });
-                    return;
-                }
-
-                let volume = 0;
-                if (volumeAnalyser) {
-                    volumeAnalyser.getByteFrequencyData(dataArray);
-                    let sum = 0;
-                    for (let i = 0; i < dataArray.length; i++) {
-                        sum += dataArray[i];
-                    }
-                    volume = sum / dataArray.length; // 0 to 255
-                } else {
-                    // Fallback procedural mouth movement for text-to-speech fallback
-                    volume = Math.floor(Math.random() * 120) + 20;
-                }
-
-                // Map volume to mouth height openness path
-                const mouthOpen = (volume / 255) * 16;
-                if (mouthPath) {
-                    mouthPath.setAttribute('d', `M 42 66 Q 50 ${66 + mouthOpen} 58 66`);
-                }
-
-                // Map frequencies to waveform bars
-                waveBars.forEach((bar, idx) => {
-                    let val = 0;
-                    if (volumeAnalyser) {
-                        val = dataArray[idx % dataArray.length] || 10;
-                    } else {
-                        val = Math.random() * volume;
-                    }
-                    bar.style.height = `${Math.max(6, (val / 255) * 35)}px`;
-                });
-
-                requestAnimationFrame(renderLipSync);
-            };
-
-            const startWebAudioAnalysis = () => {
-                try {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    volumeAnalyser = audioCtx.createAnalyser();
-                    audioSource = audioCtx.createMediaElementSource(audioElem);
-                    audioSource.connect(volumeAnalyser);
-                    volumeAnalyser.connect(audioCtx.destination);
-                    volumeAnalyser.fftSize = 32;
-                    dataArray = new Uint8Array(volumeAnalyser.frequencyBinCount);
-                } catch (err) {
-                    console.warn("AudioContext block or failed to initialize source:", err);
-                }
-            };
-
-            const speakIntroductionSequence = () => {
-                let currentPhraseIdx = 0;
-                let phraseTimeout;
-
-                const runSubtitles = () => {
-                    if (currentPhraseIdx < speechPhrases.length) {
-                        subtitleLabel.innerText = speechPhrases[currentPhraseIdx].text;
-                        phraseTimeout = setTimeout(() => {
-                            currentPhraseIdx++;
-                            runSubtitles();
-                        }, speechPhrases[currentPhraseIdx].duration);
-                    } else {
-                        subtitleLabel.innerText = "ONLINE // ASSISTANT IDLE";
-                        isSpeaking = false;
-                    }
-                };
-
-                // Check if voice.mp3 is successfully loaded and playable
-                let playPromise = audioElem.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // voice.mp3 is playing! Use Web Audio Analyser
-                        isSpeaking = true;
-                        runSubtitles();
-                        renderLipSync();
-                    }).catch(err => {
-                        console.warn("voice.mp3 play failed or not found. Falling back to Speech Synthesis:", err);
-                        // Fallback: Web Speech API
-                        const fullText = "Hello, I’m Palnati Srinivas. Welcome to my portfolio. I’m passionate about Full Stack Development, AI, and building innovative real-world projects. Explore my work, skills, and projects. Let’s build something amazing together.";
-                        
-                        if ('speechSynthesis' in window) {
-                            const synth = window.speechSynthesis;
-                            const utterance = new SpeechSynthesisUtterance(fullText);
-                            utterance.rate = 0.95;
-                            utterance.pitch = 0.95;
-
-                            const voices = synth.getVoices();
-                            const targetVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Microsoft')));
-                            if (targetVoice) utterance.voice = targetVoice;
-
-                            utterance.onstart = () => {
-                                isSpeaking = true;
-                                runSubtitles();
-                                renderLipSync();
-                            };
-
-                            utterance.onend = () => {
-                                isSpeaking = false;
-                                subtitleLabel.innerText = "ONLINE // ASSISTANT IDLE";
-                                clearTimeout(phraseTimeout);
-                            };
-
-                            utterance.onerror = () => {
-                                isSpeaking = false;
-                                subtitleLabel.innerText = "ONLINE // ASSISTANT IDLE";
-                                clearTimeout(phraseTimeout);
-                            };
-
-                            synth.speak(utterance);
-                        } else {
-                            // Offline procedural fallback
-                            isSpeaking = true;
-                            runSubtitles();
-                            renderLipSync();
-                        }
-                    });
-                }
-            };
-
-            // -------------------------------------------------------------
-            // 5. Connect Neural Link Calibration Trigger
-            // -------------------------------------------------------------
-            const connectBtn = document.getElementById('connect-btn');
-            if (connectBtn) {
-                connectBtn.addEventListener('click', () => {
-                    // Calibrate Web Audio node on interaction
-                    startWebAudioAnalysis();
-
-                    // Fade out entry gate HUD overlay
-                    gsap.to('#intro-overlay', {
-                        opacity: 0,
-                        duration: 0.8,
-                        onComplete: () => {
-                            document.getElementById('intro-overlay').style.display = 'none';
-                            
-                            // Cinematic zoom-in camera entrance effect on Avatar Capsule
-                            gsap.from('#avatar-container', {
-                                scale: 0.4,
-                                duration: 1.5,
-                                ease: 'elastic.out(1, 0.75)'
-                            });
-
-                            // Stagger fade-in floating code cards
-                            gsap.from('.floating-code-card', {
-                                opacity: 0,
-                                y: 30,
-                                stagger: 0.18,
-                                duration: 1.2,
-                                ease: 'power2.out'
-                            });
-
-                            // Speak introduction sequence!
-                            speakIntroductionSequence();
-                        }
-                    });
-                });
-            }
+            // Stagger fade-in floating code cards
+            gsap.from('.floating-code-card', {
+                opacity: 0,
+                y: 30,
+                stagger: 0.18,
+                duration: 1.2,
+                delay: 0.4,
+                ease: 'power2.out'
+            });
 
             // Fade in About grid
             gsap.to('#about-content-row', {

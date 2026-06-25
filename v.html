@@ -4,21 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palnati Pushpa Naga Venkata Srinivas | Premium AI Developer Portfolio</title>
+    <title>Palnati Pushpa Naga Venkata Srinivas | Realistic AI Assistant Portfolio</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="v.css">
-
+    
     <!-- Three.js & GSAP CDNs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* -------------------------------------------------------------
+           PROFESSIONAL MODERN PORTFOLIO OVERRIDES
+           ------------------------------------------------------------- */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: rgba(30, 41, 59, 0.65);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+            
+            --primary: #3b82f6; /* Professional Blue */
+            --primary-rgb: 59, 130, 246;
+            --secondary: #6366f1; /* Indigo */
+            --secondary-rgb: 99, 102, 241;
+            --accent: #0ea5e9; /* Sky Blue */
+            --accent-rgb: 14, 165, 233;
+            --error: #ef4444;
+            
+            --border-glass: rgba(59, 130, 246, 0.15);
+            --border-active: rgba(59, 130, 246, 0.45);
+            --border-accent: rgba(99, 102, 241, 0.45);
+            
+            --glow-primary: 0 0 20px rgba(59, 130, 246, 0.35);
+            --glow-secondary: 0 0 20px rgba(99, 102, 241, 0.35);
+            --glow-accent: 0 0 20px rgba(14, 165, 233, 0.35);
+        }
+
+        /* Connection Neural Overlay Gate */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #020205;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(25px);
+            transition: opacity 0.8s ease;
+        }
+        .intro-hud-box {
+            background: rgba(14, 5, 8, 0.85);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 35px rgba(255, 0, 60, 0.25);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 460px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            align-items: center;
+        }
+        .hud-scanner-line {
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            box-shadow: 0 0 12px var(--primary);
+            position: relative;
+            animation: scannerLoop 2.5s infinite linear;
+        }
+        @keyframes scannerLoop {
+            0% { transform: translateY(-10px); }
+            50% { transform: translateY(15px); }
+            100% { transform: translateY(-10px); }
+        }
+
         /* Custom Cursor styling */
         .custom-cursor {
             width: 8px;
@@ -31,7 +97,6 @@
             z-index: 9999;
             transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
-
         .custom-cursor-follower {
             width: 30px;
             height: 30px;
@@ -43,12 +108,187 @@
             z-index: 9998;
             transition: transform 0.1s ease-out, border-color 0.2s;
         }
-
         @media (max-width: 1024px) {
-
-            .custom-cursor,
-            .custom-cursor-follower {
+            .custom-cursor, .custom-cursor-follower {
                 display: none !important;
+            }
+        }
+
+        /* Floating Code Snippet Cards */
+        .floating-code-card {
+            position: absolute;
+            background: rgba(2, 3, 6, 0.88);
+            border: 1px solid rgba(255, 0, 60, 0.22);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.18);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-main);
+            z-index: 12;
+            pointer-events: none;
+            backdrop-filter: blur(8px);
+        }
+        .floating-code-card span {
+            color: var(--secondary);
+        }
+        .floating-code-card.snippet-1 {
+            top: 25%;
+            left: 5%;
+            animation: floatCode1 6s ease-in-out infinite;
+        }
+        .floating-code-card.snippet-2 {
+            bottom: 30%;
+            right: 5%;
+            animation: floatCode2 8s ease-in-out infinite;
+        }
+        .floating-code-card.snippet-3 {
+            top: 48%;
+            right: 8%;
+            animation: floatCode3 7s ease-in-out infinite;
+        }
+
+        @keyframes floatCode1 {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(-2deg); }
+        }
+        @keyframes floatCode2 {
+            0% { transform: translateY(0px) rotate(3deg); }
+            50% { transform: translateY(-15px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(3deg); }
+        }
+        @keyframes floatCode3 {
+            0% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(-1deg); }
+        }
+
+        /* Centered Avatar Capsule */
+        .talking-avatar-wrapper {
+            position: relative;
+            width: 290px;
+            height: 290px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.25);
+            background: #020205;
+            z-index: 10;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(105%);
+        }
+        .face-mesh-svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 11;
+        }
+        .face-mesh-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Speech Subtitle Dashboard Box */
+        .assistant-dashboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 25px;
+            gap: 15px;
+            z-index: 10;
+        }
+        .subtitle-tracker {
+            background: rgba(2, 3, 6, 0.85);
+            border: 1px solid var(--border-active);
+            border-radius: 12px;
+            padding: 15px 24px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 500px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Interactive Voice Waveform */
+        .speech-waveform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 30px;
+            opacity: 0.75;
+        }
+        .wave-bar {
+            width: 3px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: height 0.08s ease;
+        }
+
+        /* Split layout overrides for cinematic experience */
+        .split-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+            padding-top: 130px;
+            padding-bottom: 90px;
+            position: relative;
+            z-index: 5;
+            min-height: 100vh;
+        }
+        .hero-text-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            z-index: 10;
+        }
+        .hero-visual-col {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .split-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text-col {
+                align-items: center;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .hero-text-col .hero-subtitle-container {
+                justify-content: center !important;
+            }
+            #three-container {
+                left: 50% !important;
+                top: 80% !important;
             }
         }
 
@@ -66,7 +306,6 @@
             gap: 60px;
             margin-top: 50px;
         }
-
         .project-showcase-row {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -81,21 +320,17 @@
             opacity: 0;
             transform: translateY(40px);
         }
-
         .project-showcase-row:hover {
             border-color: var(--border-active);
-            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.12);
+            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.12);
             background: var(--bg-card-hover);
         }
-
         .project-showcase-row:nth-child(even) {
             grid-template-columns: 0.9fr 1.1fr;
         }
-
         .project-showcase-row:nth-child(even) .project-info-col {
             order: 2;
         }
-
         .project-showcase-row:nth-child(even) .project-visual-col {
             order: 1;
         }
@@ -106,21 +341,18 @@
             flex-direction: column;
             gap: 15px;
         }
-
         .project-subtitle {
             font-family: var(--font-heading);
             font-size: 1.05rem;
             color: var(--secondary);
             font-weight: 600;
         }
-
         .project-feature-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin: 15px 0;
         }
-
         .project-feature-list li {
             display: flex;
             align-items: center;
@@ -128,7 +360,6 @@
             font-size: 0.92rem;
             color: var(--text-muted);
         }
-
         .project-feature-list li svg {
             color: var(--accent);
             flex-shrink: 0;
@@ -141,7 +372,6 @@
             align-items: center;
             width: 100%;
         }
-
         .mock-dashboard {
             width: 100%;
             max-width: 420px;
@@ -152,13 +382,11 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: var(--transition);
         }
-
         .project-showcase-row:hover .mock-dashboard {
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.15);
+            border-color: rgba(255, 0, 60, 0.25);
+            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.15);
             transform: scale(1.02);
         }
-
         .mock-header {
             display: flex;
             align-items: center;
@@ -167,25 +395,15 @@
             background: rgba(255, 255, 255, 0.03);
             border-bottom: 1px solid var(--border-glass);
         }
-
         .mock-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
         }
-
-        .mock-dot.red {
-            background-color: var(--error);
-        }
-
-        .mock-dot.yellow {
-            background-color: #ffb703;
-        }
-
-        .mock-dot.green {
-            background-color: var(--accent);
-        }
-
+        .mock-dot.red { background-color: var(--error); }
+        .mock-dot.yellow { background-color: #ffb703; }
+        .mock-dot.green { background-color: #05f3a2; }
+        
         .mock-title {
             font-family: var(--font-mono);
             font-size: 0.68rem;
@@ -193,7 +411,6 @@
             margin-left: 10px;
             letter-spacing: 0.5px;
         }
-
         .mock-body {
             padding: 20px;
             display: flex;
@@ -202,19 +419,16 @@
             min-height: 180px;
             justify-content: center;
         }
-
         .mock-line {
             font-family: monospace;
             font-size: 0.75rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
-
         .mock-cmd {
             color: var(--primary);
             margin-right: 5px;
         }
-
         .mock-line-glow {
             font-family: monospace;
             font-size: 0.75rem;
@@ -223,13 +437,11 @@
             border-radius: 4px;
             letter-spacing: 0.5px;
         }
-
         .mock-line-glow.green {
-            background: rgba(5, 243, 162, 0.08);
-            border: 1px solid rgba(5, 243, 162, 0.2);
-            color: var(--accent);
+            background: rgba(255, 0, 60, 0.08);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            color: var(--secondary);
         }
-
         .mock-line-glow.red {
             background: rgba(255, 51, 102, 0.08);
             border: 1px solid rgba(255, 51, 102, 0.2);
@@ -246,15 +458,14 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 5px;
         }
-
         .mock-bar {
             width: 25px;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
             transition: height 1s ease-in-out;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.15);
         }
-
+        
         /* Mock Progress scan bar */
         .mock-progress-bar {
             width: 100%;
@@ -264,7 +475,6 @@
             overflow: hidden;
             margin-top: 5px;
         }
-
         .mock-progress {
             height: 100%;
             border-radius: 4px;
@@ -272,13 +482,8 @@
         }
 
         @keyframes pulseProgress {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* Credentials layout updates */
@@ -288,14 +493,12 @@
             gap: 25px;
             margin-top: 30px;
         }
-
         .credentials-card {
             padding: 30px;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
         .credentials-card h3 {
             font-family: var(--font-heading);
             font-size: 1.3rem;
@@ -306,13 +509,11 @@
             align-items: center;
             gap: 12px;
         }
-
         .credentials-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
-
         .credentials-list li {
             display: flex;
             align-items: flex-start;
@@ -321,19 +522,16 @@
             line-height: 1.5;
             color: var(--text-muted);
         }
-
         .credentials-list li::before {
             content: "✦";
             color: var(--secondary);
             font-weight: bold;
         }
-
         .hobbies-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-
         .hobbies-list li {
             font-size: 0.85rem;
             background: rgba(255, 255, 255, 0.04);
@@ -343,10 +541,9 @@
             border-radius: 8px;
             transition: var(--transition);
         }
-
         .hobbies-list li:hover {
             color: var(--text-main);
-            background: rgba(0, 242, 254, 0.08);
+            background: rgba(255, 0, 60, 0.08);
             border-color: var(--secondary);
             transform: translateY(-2px);
         }
@@ -363,14 +560,13 @@
             font-family: var(--font-mono);
             font-size: 0.72rem;
             font-weight: 700;
-            background: rgba(0, 242, 254, 0.06);
+            background: rgba(255, 0, 60, 0.06);
             border: 1px solid var(--border-accent);
             color: var(--secondary);
             padding: 4px 10px;
             border-radius: 4px;
             text-transform: uppercase;
         }
-
         .tech-pill-container {
             display: flex;
             flex-wrap: wrap;
@@ -385,7 +581,6 @@
             opacity: 0;
             transform: translateY(30px);
         }
-
         .hero-description {
             font-size: 1.15rem;
             line-height: 1.8;
@@ -393,39 +588,60 @@
             opacity: 0;
             transform: translateY(30px);
         }
-
         .hero-cta-group {
             opacity: 0;
             transform: translateY(30px);
         }
-
         .badge-container {
             opacity: 0;
             transform: translateY(30px);
         }
-
         .about-grid {
             opacity: 0;
             transform: translateY(30px);
         }
 
-        @media (max-width: 992px) {
+        /* Subtitle container styling */
+        .hero-subtitle-container {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .typed-text {
+            color: var(--secondary);
+            font-weight: 700;
+        }
 
+        /* Floating background rings behind avatar */
+        .avatar-holo-wrapper {
+            position: relative;
+            animation: floatHolo 5s ease-in-out infinite;
+        }
+        @keyframes floatHolo {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 992px) {
             .project-showcase-row,
             .project-showcase-row:nth-child(even) {
                 grid-template-columns: 1fr;
                 padding: 30px;
                 gap: 30px;
             }
-
             .project-showcase-row:nth-child(even) .project-info-col {
                 order: 1;
             }
-
             .project-showcase-row:nth-child(even) .project-visual-col {
                 order: 2;
             }
-
             .hero-title {
                 font-size: 2.8rem;
             }
@@ -434,6 +650,8 @@
 </head>
 
 <body>
+
+
     <!-- Custom Cursor Trailers -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-follower"></div>
@@ -465,54 +683,47 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Centered Talking Avatar Landing Page) -->
     <section id="home" class="hero-section">
-        <div class="container hero-grid">
-            <div class="hero-text-content">
-                <div class="badge-container" id="hero-badges">
-                    <span class="tech-badge pulse"><span class="dot"></span>AI Enthusiast</span>
-                    <span class="tech-badge alt"><span class="dot blue"></span>Startup Builder</span>
+        <div class="container split-hero-grid">
+            <div class="hero-text-col">
+                <div class="hero-subtitle-container" style="justify-content: flex-start; margin-bottom: 10px;">
+                    <span class="tech-pill" style="font-size: 0.85rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.15); border-color: var(--primary); color: #fff;">AI Enthusiast & Developer</span>
                 </div>
-                <h1 class="hero-title" id="hero-main-title">Hi, I am <br><span class="text-glow">Palnati Srinivas</span>
+                <h1 class="hero-title" style="font-size: 4rem; font-family: var(--font-heading); color: #fff; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; transform: none; opacity: 1;">
+                    Hi, I am <br><span style="color: var(--secondary); text-shadow: var(--glow-secondary);">Palnati Srinivas</span>
                 </h1>
-                <p class="hero-description" id="hero-desc">
-                    B.Tech CSE Student | AI Enthusiast | Startup Builder | Hackathon Developer. Skilled in building
-                    intelligent software systems, designing responsive full-stack solutions, and turning innovative
-                    ideas into functional prototypes.
+                <p class="hero-description" style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 0 30px 0; line-height: 1.7; transform: none; opacity: 1;">
+                    B.Tech CSE Student | Startup Builder | Hackathon Developer. <br>
+                    Skilled in building intelligent AI systems, designing responsive full-stack solutions, and turning innovative ideas into functional prototypes.
                 </p>
-                <div class="hero-cta-group" id="hero-ctas">
-                    <button class="btn btn-primary glow-btn"
-                        onclick="document.getElementById('contact').scrollIntoView()">Get in Touch</button>
-                    <button class="btn btn-secondary"
-                        onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
+                <div id="hero-ctas" style="display: flex; gap: 15px;">
+                    <button class="btn btn-primary glow-btn" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">ENTER PORTFOLIO</button>
+                    <button class="btn btn-secondary" style="border: 1px solid var(--border-glass); background: transparent; padding: 12px 24px; border-radius: 6px; color: #fff; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">VIEW PROJECTS</button>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="avatar-holo-wrapper">
-                    <!-- Three.js Container -->
-                    <div id="three-container"></div>
-                    <div class="holo-ring outer"></div>
-                    <div class="holo-ring middle"></div>
-                    <div class="holo-ring inner"></div>
-                    <div class="avatar-card">
-                        <img src="vasu.jpg" alt="Palnati Pushpa Naga Venkata Srinivas" class="avatar-img">
-                        <div class="avatar-overlay"></div>
-                    </div>
-                    <div class="avatar-hud">
-                        <div class="hud-item font-digital">SYS: ACTIVE</div>
-                        <div class="hud-item spec font-digital">DNA: AI_AGENT</div>
-                    </div>
+
+            <div class="hero-visual-col">
+                <!-- Center Realistic Talking Avatar -->
+                <div class="talking-avatar-wrapper" id="avatar-container">
+                    <img src="vasu.jpg" alt="Palnati Pushpa Naga Venkata Srinivas" class="avatar-img">
+                </div>
+
+                <!-- Floating Code Snippet Cards -->
+                <div class="floating-code-card snippet-1" style="left: -10%;">
+                    const developer = <span>new Palnati();</span>
+                </div>
+                <div class="floating-code-card snippet-2" style="right: -5%;">
+                    import <span>{ AI_Agent }</span> from 'gemini';
+                </div>
+                <div class="floating-code-card snippet-3" style="top: 80%; left: 50%; transform: translateX(-50%);">
+                    developer.<span>build(future);</span>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <span class="font-digital">SCROLL DOWN</span>
-            </a>
-        </div>
+        
+        <!-- Three.js Background Container tucked in under the centered avatar -->
+        <div id="three-container" style="position:absolute; top:50%; left:75%; transform:translate(-50%, -50%); width:550px; height:550px; z-index:1; pointer-events:none; opacity:0.35;"></div>
     </section>
 
     <!-- About Section -->
@@ -526,20 +737,13 @@
             <div class="about-grid" id="about-content-row">
                 <div>
                     <p class="about-lead">
-                        I am a passionate and self-motivated <strong>Computer Science Engineering student</strong> with
-                        a strong interest in Artificial Intelligence, Web Development, Startup-Oriented Product
-                        Building, and Hackathons.
+                        I am a passionate and self-motivated <strong>Computer Science Engineering student</strong> with a strong interest in Artificial Intelligence, Web Development, Startup-Oriented Product Building, and Hackathons.
                     </p>
                     <p class="about-body">
-                        Currently in my 3rd Year (1st Semester) at NRI University / NRI Institute of Technology, Andhra
-                        Pradesh. I specialize in building AI-powered platforms that solve real-world problems. Whether
-                        it's retail demand forecasting, fraudulent job scam detection, or fake news verification, I love
-                        engineering full-stack products from the ground up.
+                        Currently in my 3rd Year (1st Semester) at NRI University / NRI Institute of Technology, Andhra Pradesh. I specialize in building AI-powered platforms that solve real-world problems. Whether it's retail demand forecasting, fraudulent job scam detection, or fake news verification, I love engineering full-stack products from the ground up.
                     </p>
                     <p class="about-body">
-                        I enjoy collaborating in fast-paced environments, developing modern software architectures using
-                        Python, Java, Web Technologies, and prompt engineering. I leverage tools like Google AI Studio,
-                        Cursor AI, and various agentic tools to build state-of-the-art products.
+                        I enjoy collaborating in fast-paced environments, developing modern software architectures using Python, Java, Web Technologies, and prompt engineering. I leverage tools like Google AI Studio, Cursor AI, and various agentic tools to build state-of-the-art products.
                     </p>
                 </div>
                 <div class="about-quick-stats">
@@ -575,15 +779,13 @@
             <div class="section-header center">
                 <h2 class="section-title" data-text="Skills & Expertise">Skills & Expertise</h2>
                 <div class="accent-bar"></div>
-                <p class="section-subtitle">My core technical capacities, languages, and tools categorized for review.
-                </p>
+                <p class="section-subtitle">My core technical capacities, languages, and tools categorized for review.</p>
             </div>
             <div class="skills-grid-new">
                 <!-- Skill Card 1: Programming -->
                 <div class="skill-category-card glass-panel">
                     <div class="skill-cat-header">
-                        <svg class="icon-purple" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon-purple" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16 18 22 12 16 6"></polyline>
                             <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
@@ -599,8 +801,7 @@
                 <!-- Skill Card 2: Web Dev -->
                 <div class="skill-category-card glass-panel">
                     <div class="skill-cat-header">
-                        <svg class="icon-blue" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon-blue" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
                             <line x1="12" y1="22" x2="12" y2="15.5"></line>
                             <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -620,8 +821,7 @@
                 <!-- Skill Card 3: Database -->
                 <div class="skill-category-card glass-panel">
                     <div class="skill-cat-header">
-                        <svg class="icon-green" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon-green" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                             <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                             <path d="M3 12A9 3 0 0 0 21 12"></path>
@@ -637,12 +837,9 @@
                 <!-- Skill Card 4: Tools -->
                 <div class="skill-category-card glass-panel">
                     <div class="skill-cat-header">
-                        <svg class="icon-yellow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon-yellow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
-                            <path
-                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
-                            </path>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                         </svg>
                         <h3>Tools & Dev Environments</h3>
                     </div>
@@ -659,8 +856,7 @@
                 <!-- Skill Card 5: Core Specialties -->
                 <div class="skill-category-card glass-panel">
                     <div class="skill-cat-header">
-                        <svg class="icon-pink" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon-pink" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
                             <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
                             <line x1="6" y1="6" x2="6.01" y2="6"></line>
@@ -684,10 +880,9 @@
             <div class="section-header center">
                 <h2 class="section-title" data-text="Featured Projects">Featured Projects</h2>
                 <div class="accent-bar"></div>
-                <p class="section-subtitle">Detailed display of custom-built AI platforms, forecasting engines, and
-                    scanners.</p>
+                <p class="section-subtitle">Detailed display of custom-built AI platforms, forecasting engines, and scanners.</p>
             </div>
-
+            
             <div class="project-showcase-container">
                 <!-- Project 1: CareerSafe -->
                 <div class="project-showcase-row">
@@ -700,39 +895,24 @@
                         </div>
                         <h3>CareerSafe - AI Career Safety Platform</h3>
                         <p class="project-subtitle">AI-Powered Job Scam Detection & Resume Authenticity Engine</p>
-                        <p class="about-body">Developed a production-grade safety hub designed to detect online job
-                            listing scams and verify candidate credentials. Evaluates post legitimacy indices and
-                            provides AI career advising.</p>
+                        <p class="about-body">Developed a production-grade safety hub designed to detect online job listing scams and verify candidate credentials. Evaluates post legitimacy indices and provides AI career advising.</p>
                         <ul class="project-feature-list">
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Scam Classifier</strong>: Analyzes job metadata for anomaly
-                                    indicators.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Scam Classifier</strong>: Analyzes job metadata for anomaly indicators.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Resume Integrity Audit</strong>: Highlights exaggerations and logical red
-                                    flags.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Resume Integrity Audit</strong>: Highlights exaggerations and logical red flags.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Capacitor Wrap</strong>: Built as a hybrid container for Android
-                                    devices.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Capacitor Wrap</strong>: Built as a hybrid container for Android devices.</span>
                             </li>
                         </ul>
                         <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
                             Explore Repository
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -748,8 +928,7 @@
                                 <div class="mock-title">careersafe_scanner.sh</div>
                             </div>
                             <div class="mock-body">
-                                <div class="mock-line"><span class="mock-cmd">$</span> python verify_job.py --id
-                                    job_9821</div>
+                                <div class="mock-line"><span class="mock-cmd">$</span> python verify_job.py --id job_9821</div>
                                 <div class="mock-line">[+] PARSING POST TEXT METADATA...</div>
                                 <div class="mock-line">[+] ANALYZING HIRING DOMAIN SIGNATURES...</div>
                                 <div class="mock-line-glow green">[OK] LEGITIMACY VERIFIED: 97.2% SAFE</div>
@@ -770,39 +949,24 @@
                         </div>
                         <h3>NexusAI - Smart Retail Demand Forecasting</h3>
                         <p class="project-subtitle">Time-Series Forecast Engine & Analytical Inventory Dashboard</p>
-                        <p class="about-body">Designed a retail forecasting panel mapping seasonal isolation, trend
-                            residuals, and potential product supply-chain bottlenecks through interactive dashboards.
-                        </p>
+                        <p class="about-body">Designed a retail forecasting panel mapping seasonal isolation, trend residuals, and potential product supply-chain bottlenecks through interactive dashboards.</p>
                         <ul class="project-feature-list">
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Forecasting Models</strong>: Implements statistical models for demand
-                                    prediction.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Forecasting Models</strong>: Implements statistical models for demand prediction.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Visual Graphs</strong>: Renders trend residuals and seasonality charts via
-                                    Chart.js.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Visual Graphs</strong>: Renders trend residuals and seasonality charts via Chart.js.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Auto Explanation</strong>: Translates prediction analytics into actionable
-                                    business text.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Auto Explanation</strong>: Translates prediction analytics into actionable business text.</span>
                             </li>
                         </ul>
                         <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
                             Explore Repository
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -826,8 +990,7 @@
                                     <div class="mock-bar" style="height: 75%; background: var(--secondary);"></div>
                                     <div class="mock-bar" style="height: 95%; background: var(--accent);"></div>
                                 </div>
-                                <div
-                                    style="display:flex; justify-content:space-between; margin-top:10px; font-size:0.65rem; font-family:monospace; color:var(--text-muted);">
+                                <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:0.65rem; font-family:monospace; color:var(--text-muted);">
                                     <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4 (FORECAST)</span>
                                 </div>
                             </div>
@@ -846,38 +1009,24 @@
                         </div>
                         <h3>TruthLens AI - Fake News Detector</h3>
                         <p class="project-subtitle">Credibility Scorer & Article Bias Diagnostic Suite</p>
-                        <p class="about-body">Built a diagnostic workspace analyzing clickbait, sentiment, political
-                            skew, source authority, and article paragraph integrity.</p>
+                        <p class="about-body">Built a diagnostic workspace analyzing clickbait, sentiment, political skew, source authority, and article paragraph integrity.</p>
                         <ul class="project-feature-list">
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Bias & SKEW Index</strong>: Detects emotional skew and opinionated writing
-                                    patterns.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Bias & SKEW Index</strong>: Detects emotional skew and opinionated writing patterns.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Clickbait Classifier</strong>: Inspects article headers for bait
-                                    markers.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Clickbait Classifier</strong>: Inspects article headers for bait markers.</span>
                             </li>
                             <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                                <span><strong>Credibility Score</strong>: Aggregates a factual index from 0 to
-                                    100.</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Credibility Score</strong>: Aggregates a factual index from 0 to 100.</span>
                             </li>
                         </ul>
                         <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
                             Explore Repository
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -893,18 +1042,124 @@
                                 <div class="mock-title">truthlens_analyzer</div>
                             </div>
                             <div class="mock-body">
-                                <div class="mock-line"><span class="mock-cmd">SCAN:</span> "Breaking: Scientists invent
-                                    antigravity..."</div>
+                                <div class="mock-line"><span class="mock-cmd">SCAN:</span> "Breaking: Scientists invent antigravity..."</div>
                                 <div class="mock-progress-bar">
                                     <div class="mock-progress" style="width: 85%; background: var(--error);"></div>
                                 </div>
-                                <div
-                                    style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.65rem; font-family:monospace; color: var(--text-muted);">
+                                <div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.65rem; font-family:monospace; color: var(--text-muted);">
                                     <span>Bias: 78% SKEW</span>
                                     <span style="color:var(--error);">Credibility: 15%</span>
                                 </div>
-                                <div class="mock-line-glow red" style="margin-top:10px;">[ALERT] CLICKBAIT SIGNAL
-                                    DETECTED</div>
+                                <div class="mock-line-glow red" style="margin-top:10px;">[ALERT] CLICKBAIT SIGNAL DETECTED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: SmartCivic AI -->
+                <div class="project-showcase-row">
+                    <div class="project-info-col">
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Flask</span>
+                            <span class="tech-pill">Gemini AI</span>
+                            <span class="tech-pill">JavaScript</span>
+                        </div>
+                        <h3>SmartCivic AI - Civic Reporting Platform</h3>
+                        <p class="project-subtitle">Multilingual Voice Assistant & Issue Management</p>
+                        <p class="about-body">Developed an AI-powered platform for reporting civic issues. Features a multilingual voice assistant supporting English, Hindi, Telugu, and Tamil with smart complaint categorization.</p>
+                        <ul class="project-feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Multilingual Voice</strong>: Seamlessly report issues using voice commands.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Smart Categorization</strong>: Automated issue routing via Gemini AI backend.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Location Tracking</strong>: Integrates GPS coordinates with real-time chat.</span>
+                            </li>
+                        </ul>
+                        <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
+                            Explore Repository
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-visual-col">
+                        <!-- CSS Mock Dashboard 4: SmartCivic -->
+                        <div class="mock-dashboard">
+                            <div class="mock-header">
+                                <div class="mock-dot red"></div>
+                                <div class="mock-dot yellow"></div>
+                                <div class="mock-dot green"></div>
+                                <div class="mock-title">smartcivic_backend.py</div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-line"><span class="mock-cmd">$</span> FLASK_APP=app.py flask run</div>
+                                <div class="mock-line">[+] INITIALIZING VOICE ASSISTANT...</div>
+                                <div class="mock-line">[+] LANGUAGE DETECTED: TELUGU</div>
+                                <div class="mock-line-glow green">[OK] CATEGORIZED: INFRASTRUCTURE</div>
+                                <div class="mock-line">[+] LOCATION LOGGED AND SYNCED.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: TrustShield AI -->
+                <div class="project-showcase-row">
+                    <div class="project-info-col">
+                        <div class="tech-pill-container">
+                            <span class="tech-pill">Flutter</span>
+                            <span class="tech-pill">Firebase</span>
+                            <span class="tech-pill">Gemini 2.0</span>
+                            <span class="tech-pill">Node.js</span>
+                        </div>
+                        <h3>TrustShield AI - Digital Scam Protection</h3>
+                        <p class="project-subtitle">AI Threat Intelligence & Background Notification Monitor</p>
+                        <p class="about-body">Built a comprehensive mobile platform to detect digital scams, verify documents via OCR, and monitor background notifications for real-time threat protection.</p>
+                        <ul class="project-feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Message & URL Scanner</strong>: Deep AI analysis of domains and phishing attempts.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Offer Letter Verifier</strong>: OCR-based document authentication engine.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Notification Monitor</strong>: Real-time Android background threat interception.</span>
+                            </li>
+                        </ul>
+                        <a href="https://github.com/srinivaspalnati22-png" class="btn-project-link" target="_blank">
+                            Explore Repository
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-visual-col">
+                        <!-- CSS Mock Dashboard 5: TrustShield -->
+                        <div class="mock-dashboard">
+                            <div class="mock-header">
+                                <div class="mock-dot red"></div>
+                                <div class="mock-dot yellow"></div>
+                                <div class="mock-dot green"></div>
+                                <div class="mock-title">trustshield_service.kt</div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-line"><span class="mock-cmd">BACKGROUND:</span> NOTIFICATION INTERCEPTED</div>
+                                <div class="mock-line">[+] EXTRACTING URL PAYLOAD...</div>
+                                <div class="mock-progress-bar">
+                                    <div class="mock-progress" style="width: 95%; background: var(--error);"></div>
+                                </div>
+                                <div class="mock-line-glow red" style="margin-top:10px;">[ALERT] PHISHING ATTEMPT BLOCKED</div>
                             </div>
                         </div>
                     </div>
@@ -932,8 +1187,7 @@
                         <h3>B.Tech - Computer Science & Engineering</h3>
                         <p class="institution-meta">NRI University / NRI Institute of Technology</p>
                         <span class="milestone-badge purple">CURRENT: 3rd Year (1st Sem)</span>
-                        <p class="milestone-desc">Core coursework in Data Structures, Algorithms, Object Oriented
-                            Programming, Database Systems, Web Technologies, and Artificial Intelligence.</p>
+                        <p class="milestone-desc">Core coursework in Data Structures, Algorithms, Object Oriented Programming, Database Systems, Web Technologies, and Artificial Intelligence.</p>
                     </div>
                 </div>
 
@@ -945,8 +1199,7 @@
                         <h3>Intermediate Education (MPC)</h3>
                         <p class="institution-meta">Dr. BRRS Genesis Junior College, Kannuru</p>
                         <span class="milestone-badge blue">RESULT: 91%</span>
-                        <p class="milestone-desc">Specialized in Mathematics, Physics, and Chemistry (MPC). Developed
-                            solid problem-solving skills and mathematical foundations.</p>
+                        <p class="milestone-desc">Specialized in Mathematics, Physics, and Chemistry (MPC). Developed solid problem-solving skills and mathematical foundations.</p>
                     </div>
                 </div>
 
@@ -958,8 +1211,7 @@
                         <h3>Secondary School Certificate (SSC)</h3>
                         <p class="institution-meta">Dr. LHR Government High School, Mylavaram</p>
                         <span class="milestone-badge green">RESULT: 83%</span>
-                        <p class="milestone-desc">Core secondary education. Received strong academic foundations and
-                            participated in various regional science events.</p>
+                        <p class="milestone-desc">Core secondary education. Received strong academic foundations and participated in various regional science events.</p>
                     </div>
                 </div>
             </div>
@@ -972,8 +1224,7 @@
             <div class="section-header center">
                 <h2 class="section-title" data-text="Credentials & Hobbies">Credentials & Hobbies</h2>
                 <div class="accent-bar"></div>
-                <p class="section-subtitle">A collection of my certifications, hackathon achievements, language skills,
-                    and interests.</p>
+                <p class="section-subtitle">A collection of my certifications, hackathon achievements, language skills, and interests.</p>
             </div>
             <div class="credentials-grid">
                 <!-- Certifications Card -->
@@ -1003,18 +1254,14 @@
                 <div class="credentials-card glass-panel">
                     <h3>🌎 Langs & Interests</h3>
                     <div style="margin-bottom: 20px;">
-                        <h4
-                            style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">
-                            Languages</h4>
+                        <h4 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Languages</h4>
                         <ul class="hobbies-list" style="margin-bottom: 20px;">
                             <li>English</li>
                             <li>Telugu</li>
                         </ul>
                     </div>
                     <div>
-                        <h4
-                            style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">
-                            Hobbies & Interests</h4>
+                        <h4 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Hobbies & Interests</h4>
                         <ul class="hobbies-list">
                             <li>Building AI Projects</li>
                             <li>Learning New Technologies</li>
@@ -1034,8 +1281,7 @@
             <div class="section-header center">
                 <h2 class="section-title" data-text="Get In Touch">Let's Connect</h2>
                 <div class="accent-bar"></div>
-                <p class="section-subtitle">Have a project in mind, a hackathon collaboration opportunity, or just want
-                    to chat? Send me a message!</p>
+                <p class="section-subtitle">Have a project in mind, a hackathon collaboration opportunity, or just want to chat? Send me a message!</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-details-panel">
@@ -1043,8 +1289,7 @@
                         <div class="info-icon purple">📧</div>
                         <div class="info-text">
                             <h4>Email Address</h4>
-                            <p><a href="mailto:srinivaspalnati22@gmail.com"
-                                    class="glow-link">srinivaspalnati22@gmail.com</a></p>
+                            <p><a href="mailto:srinivaspalnati22@gmail.com" class="glow-link">srinivaspalnati22@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="info-glass-row">
@@ -1080,13 +1325,11 @@
                         </div>
                         <div class="form-input-wrapper">
                             <label for="form-message">Message</label>
-                            <textarea id="form-message" rows="5" placeholder="Write your message details..."
-                                required></textarea>
+                            <textarea id="form-message" rows="5" placeholder="Write your message details..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full glow-btn">
                             <span>SEND DATA STREAM</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
                                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                             </svg>
@@ -1103,8 +1346,7 @@
             <div class="footer-content-grid">
                 <div class="footer-brand-col">
                     <div class="logo">PS<span class="logo-accent">.</span></div>
-                    <p>3rd Year B.Tech CSE Student, AI Enthusiast, Startup Builder, and Hackathon Developer. Building
-                        the future of AI-driven systems.</p>
+                    <p>3rd Year B.Tech CSE Student, AI Enthusiast, Startup Builder, and Hackathon Developer. Building the future of AI-driven systems.</p>
                 </div>
                 <div class="footer-links-col">
                     <h4>Quick Navigation</h4>
@@ -1120,20 +1362,13 @@
                     <h4>Let's Collaborate</h4>
                     <div class="social-links-row">
                         <a href="https://github.com/srinivaspalnati22-png" target="_blank" title="GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/in/palnati-pushpa-naga-venkata-srinivas" target="_blank"
-                            title="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                </path>
+                        <a href="https://linkedin.com/in/palnati-pushpa-naga-venkata-srinivas" target="_blank" title="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
@@ -1143,8 +1378,7 @@
             </div>
             <div class="footer-bottom-bar">
                 <div class="container footer-bottom-flex">
-                    <p>&copy; <span id="copyright-year">2026</span> Palnati Pushpa Naga Venkata Srinivas. All Rights
-                        Reserved.</p>
+                    <p>&copy; <span id="copyright-year">2026</span> Palnati Pushpa Naga Venkata Srinivas. All Rights Reserved.</p>
                     <p>Designed with 3D Constellations & Futuristic HUD</p>
                 </div>
             </div>
@@ -1153,7 +1387,7 @@
 
     <!-- Main JS script -->
     <script src="v.js"></script>
-
+    
     <!-- Three.js Interactive 3D Sphere Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1170,14 +1404,15 @@
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(renderer.domElement);
 
-            // Create particles
+            // Create particles for the assistant core
             const particleCount = 850;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
 
-            const color1 = new THREE.Color('#9d4edd'); // Purple
-            const color2 = new THREE.Color('#00f2fe'); // Cyan
+            // Professional theme colors for 3D sphere
+            const color1 = new THREE.Color('#3b82f6'); // Professional Blue
+            const color2 = new THREE.Color('#0ea5e9'); // Sky Blue
 
             for (let i = 0; i < particleCount; i++) {
                 // Sphere math
@@ -1212,28 +1447,16 @@
             const particleSystem = new THREE.Points(geometry, material);
             scene.add(particleSystem);
 
-            // Add inner rotating wireframe
+            // Add inner rotating wireframe (neon red themed)
             const wireGeometry = new THREE.IcosahedronGeometry(1.4, 2);
             const wireMaterial = new THREE.MeshBasicMaterial({
-                color: 0x00f2fe,
+                color: 0x3b82f6,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.09
             });
             const wireMesh = new THREE.Mesh(wireGeometry, wireMaterial);
             scene.add(wireMesh);
-
-            // Mouse coordinates
-            let mouseX = 0;
-            let mouseY = 0;
-            let targetX = 0;
-            let targetY = 0;
-
-            window.addEventListener('mousemove', (e) => {
-                const rect = container.getBoundingClientRect();
-                mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
-                mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
-            });
 
             // Handle resize
             const handleResize = () => {
@@ -1243,7 +1466,7 @@
                 renderer.setSize(container.clientWidth, container.clientHeight);
             };
             window.addEventListener('resize', handleResize);
-
+            
             // Re-check sizing in case container takes time to render
             setTimeout(handleResize, 500);
 
@@ -1263,36 +1486,6 @@
                 wireMesh.rotation.y = -elapsedTime * 0.08;
                 wireMesh.rotation.z = -elapsedTime * 0.04;
 
-                // Smooth mouse drift reaction
-                targetX += (mouseX - targetX) * 0.05;
-                targetY += (mouseY - targetY) * 0.05;
-
-                // Move groups slightly based on mouse
-                particleSystem.position.x = targetX * 0.4;
-                particleSystem.position.y = targetY * 0.4;
-                wireMesh.position.x = targetX * 0.4;
-                wireMesh.position.y = targetY * 0.4;
-
-                // Morph shape with sine wave
-                const positionsArray = geometry.attributes.position.array;
-                for (let i = 0; i < particleCount; i++) {
-                    const ix = i * 3;
-                    const iy = i * 3 + 1;
-                    const iz = i * 3 + 2;
-
-                    const ox = positions[ix];
-                    const oy = positions[iy];
-                    const oz = positions[iz];
-
-                    const dist = Math.sqrt(ox * ox + oy * oy + oz * oz);
-                    const wave = 1.0 + Math.sin(dist * 3.0 + elapsedTime * 1.5) * 0.05;
-
-                    positionsArray[ix] = ox * wave;
-                    positionsArray[iy] = oy * wave;
-                    positionsArray[iz] = oz * wave;
-                }
-                geometry.attributes.position.needsUpdate = true;
-
                 renderer.render(scene, camera);
             };
 
@@ -1300,7 +1493,7 @@
         });
     </script>
 
-    <!-- Custom Cursor & GSAP Animations Script -->
+    <!-- Custom Cursor, Talking Head Simulation & GSAP Animations Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Register GSAP ScrollTrigger
@@ -1346,12 +1539,12 @@
                     item.addEventListener('mouseleave', () => {
                         gsap.to(cursorDot, {
                             scale: 1,
-                            backgroundColor: '#00f2fe',
+                            backgroundColor: 'var(--secondary)',
                             duration: 0.2
                         });
                         gsap.to(cursorFollower, {
                             scale: 1,
-                            borderColor: '#9d4edd',
+                            borderColor: 'var(--primary)',
                             duration: 0.2
                         });
                     });
@@ -1393,15 +1586,43 @@
             });
 
             // -------------------------------------------------------------
-            // 3. GSAP Entry Animations
+            // 3. Head Movement Simulation & Hero Entrance
             // -------------------------------------------------------------
+            // Slightly tilt head/shoulders naturally
+            const avatarContainer = document.getElementById('avatar-container');
+            const tiltAvatarNaturally = () => {
+                const time = Date.now() * 0.0015;
+                const tiltX = Math.sin(time) * 4;
+                const tiltY = Math.cos(time * 0.8) * 3;
+                const rotate = Math.sin(time * 0.5) * 1.5;
+                
+                if (avatarContainer) {
+                    avatarContainer.style.transform = `translate(${tiltX}px, ${tiltY}px) rotate(${rotate}deg)`;
+                }
+                requestAnimationFrame(tiltAvatarNaturally);
+            };
+            tiltAvatarNaturally();
 
-            // Hero section animations
-            const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
-            heroTl.to('#hero-badges', { opacity: 1, y: 0, delay: 0.2 })
-                .to('#hero-main-title', { opacity: 1, y: 0 }, '-=0.8')
-                .to('#hero-desc', { opacity: 1, y: 0 }, '-=0.8')
-                .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.8');
+            // -------------------------------------------------------------
+            // 4. Hero Entrance Animations
+            // -------------------------------------------------------------
+            // Cinematic zoom-in camera entrance effect on Avatar Capsule
+            gsap.from('#avatar-container', {
+                scale: 0.4,
+                duration: 1.5,
+                delay: 0.2,
+                ease: 'elastic.out(1, 0.75)'
+            });
+
+            // Stagger fade-in floating code cards
+            gsap.from('.floating-code-card', {
+                opacity: 0,
+                y: 30,
+                stagger: 0.18,
+                duration: 1.2,
+                delay: 0.4,
+                ease: 'power2.out'
+            });
 
             // Fade in About grid
             gsap.to('#about-content-row', {

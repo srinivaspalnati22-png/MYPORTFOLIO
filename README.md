@@ -208,6 +208,8 @@ Content-Type: application/json
 4. **Calculator Application** - JavaScript, HTML, CSS
 5. **Student Portfolio Website** - HTML5, CSS3, JavaScript
 6. **Data Structure Implementations** - Java, C++, Data Structures, Algorithms
+7. **SmartCivic AI** - Python, Flask, Gemini AI, JavaScript
+8. **TrustShield AI** - Flutter, Firebase, Node.js, Gemini 2.0 Flash
 
 ## Student Profile
 

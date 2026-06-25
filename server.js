@@ -38,6 +38,20 @@ const projects = [{
         description: "A fake news detection platform featuring clickbait detection, sentiment analysis, credibility scoring, bias detection, and interactive analytics dashboards.",
         technologies: ["Python", "Flask", "Tailwind CSS", "JavaScript", "Chart.js"],
         imageUrl: "projects/truthlens.jpg"
+    },
+    {
+        id: 4,
+        title: "SmartCivic AI – Civic Reporting Platform",
+        description: "An AI-powered platform for reporting civic issues featuring a multilingual voice assistant supporting English, Hindi, Telugu, and Tamil with smart complaint categorization.",
+        technologies: ["Python", "Flask", "Gemini AI", "JavaScript"],
+        imageUrl: "projects/default.jpg"
+    },
+    {
+        id: 5,
+        title: "TrustShield AI – Digital Scam Protection",
+        description: "A comprehensive mobile platform to detect digital scams, verify documents via OCR, and monitor background notifications for real-time threat protection.",
+        technologies: ["Flutter", "Firebase", "Gemini 2.0", "Node.js"],
+        imageUrl: "projects/default.jpg"
     }
 ];
 

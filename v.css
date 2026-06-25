@@ -5,30 +5,30 @@
 
 /* Custom CSS Variables */
 :root {
-    --bg-dark: #070913;
-    --bg-darker: #04050a;
-    --bg-card: rgba(13, 17, 30, 0.65);
-    --bg-card-hover: rgba(18, 24, 45, 0.85);
+    --bg-dark: #0f172a;
+    --bg-darker: #020617;
+    --bg-card: rgba(30, 41, 59, 0.65);
+    --bg-card-hover: rgba(51, 65, 85, 0.85);
     
-    --primary: #9d4edd;
-    --primary-rgb: 157, 78, 221;
-    --secondary: #00f2fe;
-    --secondary-rgb: 0, 242, 254;
-    --accent: #05f3a2;
-    --accent-rgb: 5, 243, 162;
-    --error: #ff3366;
+    --primary: #3b82f6; /* Professional Blue */
+    --primary-rgb: 59, 130, 246;
+    --secondary: #6366f1; /* Indigo */
+    --secondary-rgb: 99, 102, 241;
+    --accent: #0ea5e9; /* Sky Blue */
+    --accent-rgb: 14, 165, 233;
+    --error: #ef4444;
     
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --text-dark: #1f2937;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-dark: #1e293b;
     
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --border-active: rgba(157, 78, 221, 0.4);
-    --border-accent: rgba(0, 242, 254, 0.4);
+    --border-glass: rgba(59, 130, 246, 0.15);
+    --border-active: rgba(59, 130, 246, 0.45);
+    --border-accent: rgba(99, 102, 241, 0.45);
     
-    --glow-primary: 0 0 15px rgba(157, 78, 221, 0.4);
-    --glow-secondary: 0 0 15px rgba(0, 242, 254, 0.4);
-    --glow-accent: 0 0 15px rgba(5, 243, 162, 0.4);
+    --glow-primary: 0 0 15px rgba(59, 130, 246, 0.35);
+    --glow-secondary: 0 0 15px rgba(99, 102, 241, 0.35);
+    --glow-accent: 0 0 15px rgba(14, 165, 233, 0.35);
     
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Outfit', sans-serif;
