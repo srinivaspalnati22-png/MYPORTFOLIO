@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Palnati Pushpa Naga Venkata Srinivas</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="v.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: rgba(30, 41, 59, 0.65);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+            --primary: #3b82f6; 
+            --secondary: #6366f1; 
+            --accent: #0ea5e9; 
+            --border-glass: rgba(59, 130, 246, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-darker);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 120px auto 60px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+        }
+
+        .resume-header {
+            text-align: center;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .resume-header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        .resume-header h2 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #fff;
+        }
+
+        .resume-section {
+            margin-bottom: 35px;
+        }
+
+        .resume-section h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resume-item {
+            margin-bottom: 20px;
+        }
+
+        .resume-item h4 {
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0 0 5px 0;
+        }
+
+        .resume-item .subtitle {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .resume-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-group h5 {
+            font-size: 1rem;
+            color: #fff;
+            margin: 0 0 10px 0;
+        }
+
+        .skill-group p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        ul.bullet-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        ul.bullet-list li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Navbar overrides to ensure it shows up correctly */
+        .navbar {
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glass);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            background: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 100px 20px 40px;
+                padding: 25px;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .resume-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">PS<span class="logo-accent">.</span></a>
+            <div class="nav-menu-wrapper">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#timeline">Journey</a></li>
+                    <li><a href="index.html#credentials">Credentials</a></li>
+                    <li><a href="resume.html" class="active">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="resume-container">
+        <div class="resume-header">
+            <h1>PALNATI PUSHPA NAGA VENKATA SRINIVAS</h1>
+            <h2>B.Tech CSE Student | AI Enthusiast | Startup Builder | Hackathon Developer</h2>
+            <div class="contact-info">
+                <span>📍 Andhra Pradesh, India</span>
+                <span>📞 +91 9581778571</span>
+                <span>✉️ <a href="mailto:srinivaspalnati22@gmail.com">srinivaspalnati22@gmail.com</a></span>
+                <span>🐙 <a href="https://github.com/srinivaspalnati22-png" target="_blank">github.com/srinivaspalnati22-png</a></span>
+                <span>💼 <a href="#" target="_blank">LinkedIn</a></span>
+            </div>
+            <button class="download-btn" onclick="window.print()">Print / Download PDF</button>
+        </div>
+
+        <div class="resume-section">
+            <h3>Professional Summary</h3>
+            <p>Passionate Computer Science Engineering student with expertise in Artificial Intelligence, full-stack development, cybersecurity solutions, and startup-focused product development. Experienced in building AI-powered applications, participating in hackathons, and creating innovative technology solutions using Python, Java, Flutter, Firebase, and modern AI tools.</p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Education</h3>
+            <div class="resume-item">
+                <h4>NRI University, Andhra Pradesh</h4>
+                <div class="subtitle">B.Tech in Computer Science and Engineering | 2024–Present</div>
+                <p>Intermediate (MPC) – 91% | SSC – 83%</p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h5>Programming</h5>
+                    <p>Python, Java, DSA</p>
+                </div>
+                <div class="skill-group">
+                    <h5>Web & Mobile</h5>
+                    <p>HTML, CSS, JavaScript, Flutter</p>
+                </div>
+                <div class="skill-group">
+                    <h5>Database</h5>
+                    <p>SQL, Firebase Firestore</p>
+                </div>
+                <div class="skill-group">
+                    <h5>Tools & Core Areas</h5>
+                    <p>GitHub, VS Code, Cursor AI, Google AI Studio, Firebase<br>AI, Cybersecurity, Startup Prototyping, Hackathon Development</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Featured Projects</h3>
+            
+            <div class="resume-item">
+                <h4>TrustShield AI</h4>
+                <p>AI-powered digital trust and scam protection platform featuring message scanning, phishing URL detection, offer-letter verification, fact-checking, AI assistant, community threat intelligence, notification monitoring, and analytics dashboards.</p>
+            </div>
+            
+            <div class="resume-item">
+                <h4>SmartCivic AI</h4>
+                <p>Multilingual AI-powered civic issue reporting platform with voice assistant support in English, Hindi, Telugu, and Tamil, including smart complaint categorization and location-aware reporting.</p>
+            </div>
+            
+            <div class="resume-item">
+                <h4>CareerSafe</h4>
+                <p>AI-powered job scam detection, resume authenticity verification, and career guidance platform.</p>
+            </div>
+            
+            <div class="resume-item">
+                <h4>NexusAI</h4>
+                <p>Retail demand forecasting platform with predictive analytics dashboards and visualization.</p>
+            </div>
+            
+            <div class="resume-item">
+                <h4>TruthLens AI</h4>
+                <p>Fake news detection platform with sentiment analysis, credibility scoring, clickbait detection, and bias analysis.</p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Certifications</h3>
+            <ul class="bullet-list">
+                <li>Explore Machine Learning Using Python – Infosys Springboard</li>
+                <li>Prompt Engineering – Infosys Springboard</li>
+                <li>Introduction to Deep Learning – Infosys Springboard</li>
+                <li>Intellectual Property Rights (IPR) Awareness Program</li>
+                <li>LetsUpgrade Learning Programs</li>
+            </ul>
+        </div>
+
+        <div class="resume-section">
+            <h3>Hackathons & Achievements</h3>
+            <ul class="bullet-list">
+                <li>Techzite 2025 – 24-Hour Hackathon at IIIT Nuzvid</li>
+                <li>24-Hour Hackathon at P.B. Siddhartha Degree College</li>
+                <li>First Prize – 5-Hour Hackathon at NRI Institute of Technology</li>
+                <li>CREATHON Hackathon Event at NRI Institute of Technology</li>
+            </ul>
+        </div>
+
+        <div class="resume-section">
+            <h3>Languages</h3>
+            <p>Telugu, English</p>
+        </div>
+    </div>
+</body>
+</html>
