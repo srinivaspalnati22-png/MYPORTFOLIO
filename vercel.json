@@ -6,6 +6,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "resume.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "v.css",
       "use": "@vercel/static"
     },
@@ -26,6 +30,9 @@
     {
       "src": "/api/(.*)",
       "dest": "server.js"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
