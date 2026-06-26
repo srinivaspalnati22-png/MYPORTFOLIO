@@ -2,34 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "resume.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "v.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "v.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "vasu.jpg",
-      "use": "@vercel/static"
-    },
-    {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "server.js"
+    },
+    {
+      "src": "/resume",
+      "dest": "/resume.html"
     },
     {
       "handle": "filesystem"
